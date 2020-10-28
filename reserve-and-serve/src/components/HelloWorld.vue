@@ -1,59 +1,139 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa" target="_blank" rel="noopener">pwa</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="">
+    <section class="hero is-light is-medium">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active"> Home </a>
+                <a class="navbar-item"> Examples </a>
+                <a class="navbar-item"> Documentation </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <section>
+            <b-dropdown v-model="selectedOptions" multiple aria-role="list">
+              <button class="button is-primary" type="button" slot="trigger">
+                <span>Opcije rezervacije: </span>
+                <b-icon icon="menu-down"></b-icon>
+              </button>
+              <div class="columns">
+                <div class="column">
+                  <h1 class="is-primary">Broj gostiju</h1>
+                  <h1 class="is-primary">
+                    <span class="material-icons"> people </span>
+                  </h1>
+                  <b-dropdown-item value="2" aria-role="listitem">
+                    <span>2</span>
+                  </b-dropdown-item>
+                  <b-dropdown-item value="4" aria-role="listitem">
+                    <span>4</span>
+                  </b-dropdown-item>
+                  <b-dropdown-item value="6" aria-role="listitem">
+                    <span>6</span>
+                  </b-dropdown-item>
+                  <b-dropdown-item value="12" aria-role="listitem">
+                    <span>12</span>
+                  </b-dropdown-item>
+                </div>
+                <div class="column">
+                  <h1 class="is-primary">Mjesto stola</h1>
+                  <h1 class="is-primary">
+                    <span class="material-icons"> push_pin </span>
+                  </h1>
+                  <b-dropdown-item value="placeWindow" aria-role="listitem">
+                    <span>Kraj prozora</span>
+                  </b-dropdown-item>
+                  <b-dropdown-item value="placeInterion" aria-role="listitem">
+                    <span>U unutrašnjosti</span>
+                  </b-dropdown-item>
+                </div>
+                <div class="column">
+                  <h1 class="is-primary">Vrijeme rezervacije</h1>
+                  <b-datetimepicker
+                    v-model="datetime"
+                    inline
+                    :timepicker="timepicker"
+                    :min-datetime="minDatetime"
+                    :max-datetime="maxDatetime"
+                    :horizontal-time-picker="true"
+                  ></b-datetimepicker>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column">
+                  <button class="button is-primary">
+                    Sviđa mi se! Rezerviraj
+                  </button>
+                </div>
+              </div>
+            </b-dropdown>
+          </section>
+          <section>
+            <b-button class="button is-primary" type="button" slot=""
+              icon-left="qrcode-scan">
+              Sjedim u restoranu, daj mi da naručim
+            </b-button>
+          </section>
+        </div>
+      </div>
+      <!-- Hero footer: will stick at the bottom -->
+      <div class="hero-foot">
+        <nav class="tabs">
+          <div class="container">
+            <ul>
+              <li class="is-active"><a>Overview</a></li>
+              <li><a>Modifiers</a></li>
+              <li><a>Grid</a></li>
+              <li><a>Elements</a></li>
+              <li><a>Components</a></li>
+              <li><a>Layout</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+  data() {
+    const min = new Date();
+    min.setHours(9);
+    const max = new Date();
+    max.setHours(21);
+    return {
+      selectedOptions: [],
+      datetime: new Date(),
+      timepicker: {
+        incrementMinutes: 15,
+      },
+      minDatetime: min,
+      maxDatetime: max,
+    };
+  },
+};
 </script>
+  
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style>
 </style>

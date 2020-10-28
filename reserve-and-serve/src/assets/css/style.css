@@ -1,0 +1,50 @@
+
+button{
+    all: unset;
+}
+.hero{
+    height: 100vh;
+}
+.hero section{
+    padding: 20px 0;
+}
+.hero.is-light a.navbar-item,.neu,.datepicker .content-horizonal-timepicker,.datepicker .datepicker-header{
+    border-radius: 0 0 10px 10px;
+    border: none;
+}
+.is-primary{
+    color: #7957d5;;
+}
+h1.is-primary{
+    font-size: 24px;
+}
+button.neu{
+    border-radius: 10px;
+    padding: 10px 30%;
+    box-shadow:  3px 3px 3px -1px rgba(0,0,0,0.2),  -3px -3px 3px -1px rgba(255, 255, 255, 0.5);
+}
+.datepicker .datepicker-table{
+    border-radius: 10px;
+    box-shadow:  3px 3px 3px -1px rgba(0,0,0,0.2),  -3px -3px 3px -1px rgba(255, 255, 255, 0.2);
+}
+.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active, .hero.is-light .navbar-link:hover, .hero.is-light .navbar-link.is-active, .neu:hover{
+    box-shadow: inset 3px 3px 3px -1px rgba(0,0,0,0.2), inset -3px -3px 3px -1px rgba(255, 255, 255, 0.2);
+}
+.dropdown{
+    display: flex;
+    text-align: center;
+}
+.dropdown.dropdown-menu-animation .dropdown-menu{
+    width: 100%;
+}
+.dropdown > div{
+    width: 50%;
+    margin: auto;
+}
+a.dropdown-item{
+    all: unset;
+    display: block;
+}
+.datepicker .dropdown-content{
+    box-shadow: none;
+}
