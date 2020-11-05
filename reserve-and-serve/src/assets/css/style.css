@@ -8,12 +8,15 @@ button{
 .hero section{
     padding: 20px 0;
 }
+.hero.is-light,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active, .hero.is-light .navbar-link:hover, .hero.is-light .navbar-link.is-active{
+    background-color: white;
+}
 .hero.is-light a.navbar-item,.neu,.datepicker .content-horizonal-timepicker,.datepicker .datepicker-header{
     border-radius: 0 0 10px 10px;
     border: none;
 }
 .is-primary{
-    color: #7957d5;;
+    color: #363636;
 }
 h1.is-primary{
     font-size: 24px;
@@ -47,4 +50,45 @@ a.dropdown-item{
 }
 .datepicker .dropdown-content{
     box-shadow: none;
+}
+.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-selected {
+    background-color: #363636;
+    color: #fff;
+}
+.select:not(.is-multiple):not(.is-loading)::after{
+    border-color: #363636;
+}
+.select select:focus, .taginput .taginput-container.is-focusable:focus, .textarea:focus, .input:focus, .select select.is-focused, .taginput .is-focused.taginput-container.is-focusable, .is-focused.textarea, .is-focused.input, .select select:active, .taginput .taginput-container.is-focusable:active, .textarea:active, .input:active, .select select.is-active, .taginput .is-active.taginput-container.is-focusable, .is-active.textarea, .is-active.input{
+    border-color: #363636;
+    -webkit-box-shadow: 0 0 0 0.125em rgba(0,0,0, 0.25);
+    box-shadow: 0 0 0 0.125em rgba(0,0,0, 0.25);
+}
+.control{
+    margin-left: 5px;
+}
+.hero.is-medium .hero-body{
+    padding-top: 3em;
+}
+.modal-background{
+    background-color: white;
+}
+.modal.is-active{
+    padding: 20px;
+}
+.modal-card-head, .modal-card-foot{
+    background-color: white;
+    border-color: whitesmoke;
+}
+.columns{
+    max-width: 100%;
+}
+.delete{
+    background-color: #363636;
+}
+.delete:hover, .delete:focus{
+    background-color: #363636;
+    opacity: 0.8;
+}
+.text-left{
+    text-align: left;
 }

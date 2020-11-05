@@ -8,6 +8,9 @@ import './registerServiceWorker'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 import './assets/css/style.css'
+import VueQrcodeReader from "vue-qrcode-reader";
+
+Vue.use(VueQrcodeReader);
 
 Vue.use(Buefy)
 

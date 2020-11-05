@@ -26,15 +26,291 @@
       <div class="hero-body">
         <div class="container has-text-centered">
           <section>
-            <b-dropdown v-model="selectedOptions" multiple aria-role="list">
-              <button class="button is-primary" type="button" slot="trigger">
+            <b-button
+              class="button is-dark"
+              type="button"
+              slot=""
+              icon-left="qrcode-scan"
+              @click="isQRModalActive = true"
+            >
+              Sjedim u restoranu, daj mi da naručim
+            </b-button>
+          </section>
+
+          <!-- restaurants -->
+          <section>
+            <div class="columns">
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img
+                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="https://bulma.io/images/placeholders/96x96.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                      <a href="#">#css</a> <a href="#">#responsive</a>
+                      <br />
+                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img
+                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="https://bulma.io/images/placeholders/96x96.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                      <a href="#">#css</a> <a href="#">#responsive</a>
+                      <br />
+                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img
+                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="https://bulma.io/images/placeholders/96x96.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      <button
+                        class="button is-dark is-medium"
+                        @click="isComponentModalActive = true"
+                      >
+                        Launch component modal
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <img
+                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        alt="Placeholder image"
+                      />
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="https://bulma.io/images/placeholders/96x96.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                      <a href="#">#css</a> <a href="#">#responsive</a>
+                      <br />
+                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <b-modal v-model="isQrModalActive" full-screen>
+              <qrcode-stream @decode="onDecode"></qrcode-stream>
+            </b-modal>
+            <!-- Modal -->
+            <b-modal
+              v-model="isComponentModalActive"
+              has-modal-card
+              full-screen
+              :can-cancel="false"
+            >
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Opcije rezervacije</p>
+                  <button
+                    class="delete"
+                    aria-label="close"
+                    @click="isComponentModalActive = false"
+                  ></button>
+                </header>
+
+                <section class="modal-card-body">
+                  <div class="columns">
+                    <div class="column ">
+                      
+                          <figure class="image is-1by1">
+                            <img
+                              src="https://bulma.io/images/placeholders/96x96.png"
+                              alt="Placeholder image"
+                            />
+                          </figure>
+                       
+                    </div>
+                    
+                     <div class="column is-four-fifths text-left">
+                      <h4>Ime restorana</h4>
+                      <p>adresa</p>
+                      <p>kontakt broj</p>                         
+                       
+                    </div>
+                  </div>
+                  <div class="columns">
+                    <div class="column">
+                      <h1 class="is-dark">Broj gostiju</h1>
+                      <h1 class="is-dark">
+                        <span class="material-icons"> people </span>
+                      </h1>
+                      <b-dropdown-item value="2" aria-role="listitem">
+                        <span>2</span>
+                      </b-dropdown-item>
+                      <b-dropdown-item value="4" aria-role="listitem">
+                        <span>4</span>
+                      </b-dropdown-item>
+                      <b-dropdown-item value="6" aria-role="listitem">
+                        <span>6</span>
+                      </b-dropdown-item>
+                      <b-dropdown-item value="12" aria-role="listitem">
+                        <span>12</span>
+                      </b-dropdown-item>
+                    </div>
+                    <div class="column">
+                      <h1 class="is-dark">Mjesto stola</h1>
+                      <h1 class="is-dark">
+                        <span class="material-icons"> push_pin </span>
+                      </h1>
+                      <b-dropdown-item value="placeWindow" aria-role="listitem">
+                        <span>Kraj prozora</span>
+                      </b-dropdown-item>
+                      <b-dropdown-item
+                        value="placeInterion"
+                        aria-role="listitem"
+                      >
+                        <span>U unutrašnjosti</span>
+                      </b-dropdown-item>
+                    </div>
+                    <div class="column">
+                      <h1 class="is-dark">Vrijeme rezervacije</h1>
+                      <b-datetimepicker
+                        v-model="datetime"
+                        inline
+                        :timepicker="timepicker"
+                        :min-datetime="minDatetime"
+                        :max-datetime="maxDatetime"
+                        :horizontal-time-picker="true"
+                      ></b-datetimepicker>
+                    </div>
+                  </div>
+                </section>
+                <footer class="modal-card-foot">
+                  <div class="container">
+                    <div class="columns">
+                      <div class="column">
+                        <button class="button is-dark">
+                          Sviđa mi se! Rezerviraj
+                        </button>
+                      </div>
+                      <div class="column">
+                        <button
+                          outlined
+                          class="button is-dark close-modal"
+                          type="button"
+                          @click="isComponentModalActive = false"
+                        >
+                          Zatvori
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </footer>
+              </div>
+            </b-modal>
+            <!-- Modal end -->
+
+
+
+            <!-- <b-dropdown v-model="selectedOptions" multiple aria-role="list">
+              <button class="button is-dark" type="button" slot="trigger">
                 <span>Opcije rezervacije: </span>
                 <b-icon icon="menu-down"></b-icon>
               </button>
               <div class="columns">
                 <div class="column">
-                  <h1 class="is-primary">Broj gostiju</h1>
-                  <h1 class="is-primary">
+                  <h1 class="is-dark">Broj gostiju</h1>
+                  <h1 class="is-dark">
                     <span class="material-icons"> people </span>
                   </h1>
                   <b-dropdown-item value="2" aria-role="listitem">
@@ -51,8 +327,8 @@
                   </b-dropdown-item>
                 </div>
                 <div class="column">
-                  <h1 class="is-primary">Mjesto stola</h1>
-                  <h1 class="is-primary">
+                  <h1 class="is-dark">Mjesto stola</h1>
+                  <h1 class="is-dark">
                     <span class="material-icons"> push_pin </span>
                   </h1>
                   <b-dropdown-item value="placeWindow" aria-role="listitem">
@@ -63,7 +339,7 @@
                   </b-dropdown-item>
                 </div>
                 <div class="column">
-                  <h1 class="is-primary">Vrijeme rezervacije</h1>
+                  <h1 class="is-dark">Vrijeme rezervacije</h1>
                   <b-datetimepicker
                     v-model="datetime"
                     inline
@@ -76,19 +352,17 @@
               </div>
               <div class="columns">
                 <div class="column">
-                  <button class="button is-primary">
+                  <button class="button is-dark">
                     Sviđa mi se! Rezerviraj
                   </button>
                 </div>
               </div>
-            </b-dropdown>
+            </b-dropdown> -->
           </section>
-          <section>
-            <b-button class="button is-primary" type="button" slot=""
-              icon-left="qrcode-scan">
-              Sjedim u restoranu, daj mi da naručim
-            </b-button>
-          </section>
+          <!-- restaurants end-->
+
+
+
         </div>
       </div>
       <!-- Hero footer: will stick at the bottom -->
@@ -129,6 +403,7 @@ export default {
       },
       minDatetime: min,
       maxDatetime: max,
+      isComponentModalActive: false,
     };
   },
 };
