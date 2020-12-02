@@ -13,9 +13,9 @@
 </template>
 <script>
 
-import Navigation from "./components/navigation.vue";
+import Navigation from "@/components/navigation.vue";
 
-import Bottom from "./components/bottom.vue";
+import Bottom from "@/components/bottom.vue";
 // import selectMultiple from "./components/selectMultiple.vue";
 
 export default {
