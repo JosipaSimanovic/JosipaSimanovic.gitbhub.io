@@ -13,7 +13,6 @@
     </section>
   </div>
 </template>
-
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import Navigation from "./components/navigation.vue";
