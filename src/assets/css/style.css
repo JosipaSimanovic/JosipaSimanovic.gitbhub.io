@@ -1,37 +1,124 @@
-
+:root {
+    --black: #363636;
+    --white: #f5f5f5;
+    --orange: #c35b26;
+  }
+  ::-webkit-scrollbar-track
+  {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: var(--black);
+  }
+  
+  ::-webkit-scrollbar
+  {
+      width: 10px;
+      background-color: var(--black);
+  }
+  
+  ::-webkit-scrollbar-thumb
+  {
+      background-color:var(--orange);
+      border: 2px solid var(--black);
+  }
+  select option:hover, select option:checked {
+    box-shadow: 0 0 10px 100px #a85918 inset;
+}
+*,.datepicker .dropdown-content{
+    border-radius: 0;
+}
+.dropdown-item .dropdown-horizonal-timepicker:focus{
+    border: none;
+}
+body{
+    background-color: var(--black);
+   
+}
+a{
+    color: var(--orange);
+}
+a:hover, a:active{
+    color: black;
+}
+.hero .navbar {
+    background: var(--black);
+    box-shadow: 0 0 5px black;
+}
 button{
     all: unset;
 }
 .hero{
     height: 100vh;
+    
 }
 .hero section{
     padding: 20px 0;
 }
-.hero.is-light,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active, .hero.is-light .navbar-link:hover, .hero.is-light .navbar-link.is-active{
-    background-color: white;
+.hero.is-light,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active, .hero.is-light .navbar-link:hover, .hero.is-light .navbar-link.is-active,.hero-foot{
+    background-color:var(--black);
+    color: var(--white);
 }
-.hero.is-light a.navbar-item,.neu,.datepicker .content-horizonal-timepicker,.datepicker .datepicker-header{
-    border-radius: 0 0 10px 10px;
+.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active
+.neu,.datepicker .content-horizonal-timepicker,.datepicker .datepicker-header{
+   
     border: none;
 }
-.is-primary{
-    color: #363636;
+.hero-body{
+    background-color: var(--black);
+  
+}
+.hero.is-light .navbar-item, .hero.is-light .navbar-link{
+    color: var(--white);
+    border: 2px solid var(--black);
+    border-width: 0 0 2px 0;
+}
+.hero-body::before {    
+    content: "";
+    background: url(../img/cutlery.png);
+    background-size: 95% 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top:20px;
+    right: 0px;
+    bottom: 50px;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    opacity: 0.5;
+}
+.button{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.button.is-dark{
+    border: 2px solid var(--orange);
+    border-width: 0 0 2px 0;
+   background-color: #242424;
+    border-radius: 0;
+}
+.button.is-dark:hover,.button.is-dark:focus,.button.is-dark:active{
+    border: 2px solid var(--orange);
+    border-width: 0 0 2px 0;
+    background-color: var(--black);
+}
+.is-primary,.hero.is-light .title,.hero.is-light .subtitle{
+    color: var(--white);
 }
 h1.is-primary{
     font-size: 24px;
 }
 button.neu{
-    border-radius: 10px;
+   
     padding: 10px 30%;
-    box-shadow:  3px 3px 3px -1px rgba(0,0,0,0.2),  -3px -3px 3px -1px rgba(255, 255, 255, 0.5);
+border: 2px solid var(--white);
 }
 .datepicker .datepicker-table{
-    border-radius: 10px;
-    box-shadow:  3px 3px 3px -1px rgba(0,0,0,0.2),  -3px -3px 3px -1px rgba(255, 255, 255, 0.2);
+    padding: 0;
+    border: 2px solid var(--white);
 }
 .hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active, .hero.is-light .navbar-link:hover, .hero.is-light .navbar-link.is-active, .neu:hover{
-    box-shadow: inset 3px 3px 3px -1px rgba(0,0,0,0.2), inset -3px -3px 3px -1px rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--white);
+   
 }
 .dropdown{
     display: flex;
@@ -51,17 +138,20 @@ a.dropdown-item{
 .datepicker .dropdown-content{
     box-shadow: none;
 }
-.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-selected {
-    background-color: #363636;
-    color: #fff;
+.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-selected,.modal.is-full-screen > .animation-content, .modal.is-full-screen > .animation-content > .modal-card {
+    background-color: var(--black);
+    color: var(--white);
+}
+.modal-card-head, .modal-card-foot{
+    padding: 10px 20px;
 }
 .select:not(.is-multiple):not(.is-loading)::after{
-    border-color: #363636;
+    border-color: var(--black);
 }
 .select select:focus, .taginput .taginput-container.is-focusable:focus, .textarea:focus, .input:focus, .select select.is-focused, .taginput .is-focused.taginput-container.is-focusable, .is-focused.textarea, .is-focused.input, .select select:active, .taginput .taginput-container.is-focusable:active, .textarea:active, .input:active, .select select.is-active, .taginput .is-active.taginput-container.is-focusable, .is-active.textarea, .is-active.input{
-    border-color: #363636;
-    -webkit-box-shadow: 0 0 0 0.125em rgba(0,0,0, 0.25);
-    box-shadow: 0 0 0 0.125em rgba(0,0,0, 0.25);
+   border-radius: 0;
+    border: 2px solid var(--white);
+    border-width: 0 0 2px 0;
 }
 .control{
     margin-left: 5px;
@@ -70,25 +160,72 @@ a.dropdown-item{
     padding-top: 3em;
 }
 .modal-background{
-    background-color: white;
+    background-color: var(--black);
+}
+.modal-card-body{
+    background-color: var(--black);
+    color: var(--white);
+}
+.card{
+    background-color: var(--black);
+    box-shadow: 0px 0px 5px black;
+    color: var(--white);
+}
+.image.is-4by3 {
+    padding-top: 175px;
+}
+.image.is-square img, .image.is-square .has-ratio, .image.is-1by1 img, .image.is-1by1 .has-ratio, .image.is-5by4 img, .image.is-5by4 .has-ratio, .image.is-4by3 img, .image.is-4by3 .has-ratio, .image.is-3by2 img, .image.is-3by2 .has-ratio, .image.is-5by3 img, .image.is-5by3 .has-ratio, .image.is-16by9 img, .image.is-16by9 .has-ratio, .image.is-2by1 img, .image.is-2by1 .has-ratio, .image.is-3by1 img, .image.is-3by1 .has-ratio, .image.is-4by5 img, .image.is-4by5 .has-ratio, .image.is-3by4 img, .image.is-3by4 .has-ratio, .image.is-2by3 img, .image.is-2by3 .has-ratio, .image.is-3by5 img, .image.is-3by5 .has-ratio, .image.is-9by16 img, .image.is-9by16 .has-ratio, .image.is-1by2 img, .image.is-1by2 .has-ratio, .image.is-1by3 img, .image.is-1by3 .has-ratio{
+    object-fit: cover;
 }
 .modal.is-active{
     padding: 20px;
 }
 .modal-card-head, .modal-card-foot{
-    background-color: white;
-    border-color: whitesmoke;
+    background-color: var(--black);
+    border-color: var(--white);
 }
+
 .columns{
     max-width: 100%;
 }
 .delete{
-    background-color: #363636;
+    background-color: var(--orange);
 }
 .delete:hover, .delete:focus{
-    background-color: #363636;
+    background-color: var(--white);
     opacity: 0.8;
 }
 .text-left{
     text-align: left;
+}
+.datepicker .dropdown-content,.modal-close::before, .delete::before, .modal-close::after, .delete::after,.select select, .taginput .taginput-container.is-focusable, .textarea, .input{
+    background-color: var(--black);
+    color: var(--white);
+}
+.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active{
+    border-width: 0 0 2px 0;
+}
+.field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active,.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-today,.select select, .taginput .taginput-container.is-focusable, .textarea, .input,.datepicker .datepicker-table{
+    border-color: var(--orange);
+    border-radius: 0;
+    border-width: 0 0 2px 0;
+   
+}
+.modal-card-head, .modal-card-foot{
+    border: none;
+}
+.select select:focus, .taginput .taginput-container.is-focusable:focus, .textarea:focus, .input:focus, .select select.is-focused, .taginput .is-focused.taginput-container.is-focusable, .is-focused.textarea, .is-focused.input, .select select:active, .taginput .taginput-container.is-focusable:active, .textarea:active, .input:active, .select select.is-active, .taginput .is-active.taginput-container.is-focusable, .is-active.textarea, .is-active.input{
+    box-shadow: 0 0 0 0.125em rgba(195,91,38, 0.25);
+}
+
+
+
+
+
+@media screen and (max-width:560px){
+    .hero-body::before{
+        background-size: 300%;
+    background-position: left;
+    opacity: 0.5;
+    }
 }

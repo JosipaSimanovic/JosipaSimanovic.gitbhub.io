@@ -1,8 +1,8 @@
 <template>
-  <div class="">
-    <section class="hero is-light is-medium">
+  <!-- <div class="">
+    <section class="hero is-light is-medium"> -->
       <!-- Hero head: will stick at the top -->
-      <div class="hero-head">
+      <!-- <div class="hero-head">
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
@@ -21,11 +21,10 @@
             </div>
           </div>
         </nav>
-      </div>
+      </div> -->
       <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <section>
+   
+          <!-- <section>
             <b-button
               class="button is-dark"
               type="button"
@@ -35,7 +34,7 @@
             >
               Sjedim u restoranu, daj mi da naručim
             </b-button>
-          </section>
+          </section> -->
 
           <!-- restaurants -->
           <section>
@@ -45,7 +44,7 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        src="../assets/img/logo.jpg"
                         alt="Placeholder image"
                       />
                     </figure>
@@ -55,7 +54,7 @@
                       <div class="media-left">
                         <figure class="image is-48x48">
                           <img
-                            src="https://bulma.io/images/placeholders/96x96.png"
+                            src="../assets/img/logo.jpg"
                             alt="Placeholder image"
                           />
                         </figure>
@@ -81,7 +80,7 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        src="../assets/img/logo.jpg"
                         alt="Placeholder image"
                       />
                     </figure>
@@ -91,7 +90,7 @@
                       <div class="media-left">
                         <figure class="image is-48x48">
                           <img
-                            src="https://bulma.io/images/placeholders/96x96.png"
+                            src="../assets/img/logo.jpg"
                             alt="Placeholder image"
                           />
                         </figure>
@@ -117,7 +116,7 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        src="../assets/img/logo.jpg"
                         alt="Placeholder image"
                       />
                     </figure>
@@ -127,7 +126,7 @@
                       <div class="media-left">
                         <figure class="image is-48x48">
                           <img
-                            src="https://bulma.io/images/placeholders/96x96.png"
+                            src="../assets/img/logo.jpg"
                             alt="Placeholder image"
                           />
                         </figure>
@@ -154,7 +153,7 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
+                        src="../assets/img/logo.jpg"
                         alt="Placeholder image"
                       />
                     </figure>
@@ -164,7 +163,7 @@
                       <div class="media-left">
                         <figure class="image is-48x48">
                           <img
-                            src="https://bulma.io/images/placeholders/96x96.png"
+                            src="../assets/img/logo.jpg"
                             alt="Placeholder image"
                           />
                         </figure>
@@ -187,10 +186,24 @@
               </div>
             </div>
 
-
-            <b-modal v-model="isQrModalActive" full-screen>
-              <qrcode-stream @decode="onDecode"></qrcode-stream>
-            </b-modal>
+            <!-- <b-modal
+              v-model="isQRModalActive"
+              has-modal-card
+              full-screen
+              :can-cancel="false"
+            >
+            <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Opcije rezervacije</p>
+                  <button
+                    class="delete"
+                    aria-label="close"
+                    @click="isQRModalActive = false"
+                  ></button>
+                </header>
+              <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
+              </div>
+            </b-modal> -->
             <!-- Modal -->
             <b-modal
               v-model="isComponentModalActive"
@@ -210,25 +223,19 @@
 
                 <section class="modal-card-body">
                   <div class="columns">
-                    <div class="column ">
-                      
-                          <figure class="image is-1by1">
-                            <img
-                              src="https://bulma.io/images/placeholders/96x96.png"
-                              alt="Placeholder image"
-                            />
-                          </figure>
-                       
-                    </div>
-                    
-                     <div class="column is-four-fifths text-left">
+                    <div class="column">
+                      <figure class="image is-1by1">
+                        <img
+                          src="../assets/img/logo.jpg"
+                          alt="Placeholder image"
+                        />
+                      </figure>
+
                       <h4>Ime restorana</h4>
                       <p>adresa</p>
-                      <p>kontakt broj</p>                         
-                       
+                      <p>kontakt broj</p>
                     </div>
-                  </div>
-                  <div class="columns">
+
                     <div class="column">
                       <h1 class="is-dark">Broj gostiju</h1>
                       <h1 class="is-dark">
@@ -300,8 +307,6 @@
             </b-modal>
             <!-- Modal end -->
 
-
-
             <!-- <b-dropdown v-model="selectedOptions" multiple aria-role="list">
               <button class="button is-dark" type="button" slot="trigger">
                 <span>Opcije rezervacije: </span>
@@ -360,13 +365,9 @@
             </b-dropdown> -->
           </section>
           <!-- restaurants end-->
-
-
-
-        </div>
-      </div>
+      
       <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot">
+      <!-- <div class="hero-foot">
         <nav class="tabs">
           <div class="container">
             <ul>
@@ -379,9 +380,9 @@
             </ul>
           </div>
         </nav>
-      </div>
-    </section>
-  </div>
+      </div> -->
+    <!-- </section>
+  </div> -->
 </template>
 
 <script>
@@ -406,6 +407,7 @@ export default {
       isComponentModalActive: false,
     };
   },
+  
 };
 </script>
   
