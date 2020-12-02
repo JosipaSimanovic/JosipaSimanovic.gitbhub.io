@@ -6,7 +6,6 @@
         <div class="container has-text-centered">
           <Order />
           <HelloWorld />
-          <!-- restaurants -->
         </div>
       </div>
       <Bottom/>

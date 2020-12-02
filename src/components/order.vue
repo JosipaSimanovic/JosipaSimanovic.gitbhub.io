@@ -13,7 +13,8 @@
             >
             
                <div class="columns">
-                    <div class="column">
+                    <div class="column"></div>
+                    <div class="column qr">
               <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
                     </div>
                     <div class="column"></div>
@@ -42,3 +43,8 @@ export default {
   
 };
 </script>
+<style>
+    .qr{
+        height: 70vh;
+    }
+</style>
