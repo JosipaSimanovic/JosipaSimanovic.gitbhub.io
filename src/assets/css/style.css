@@ -205,6 +205,8 @@ a.dropdown-item{
 .hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active{
     border-width: 0 0 2px 0;
 }
+a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
+    background-color: inherit;}
 .field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active,.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-today,.select select, .taginput .taginput-container.is-focusable, .textarea, .input,.datepicker .datepicker-table{
     border-color: var(--orange);
     border-radius: 0;

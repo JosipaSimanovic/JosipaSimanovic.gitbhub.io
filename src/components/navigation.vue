@@ -11,9 +11,9 @@
             </div>
             <div id="navbarMenuHeroA" class="navbar-menu">
               <div class="navbar-end">
-                <a class="navbar-item is-active"> Home </a>
-                <a class="navbar-item"> Examples </a>
-                <a class="navbar-item"> Documentation </a>
+                <router-link to="/" class="navbar-item is-active"> Home </router-link>
+                 <router-link to="/About" class="navbar-item "> About </router-link>
+                 
               </div>
             </div>
           </div>
