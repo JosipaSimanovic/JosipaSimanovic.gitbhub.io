@@ -15,7 +15,8 @@
                <div class="columns">
                     <div class="column"></div>
                     <div class="column qr">
-              <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
+              <qrcode-stream ></qrcode-stream>
+              <!-- @decode="onDecode" @init="onInit" -->
                     </div>
                     <div class="column"></div>
                </div>

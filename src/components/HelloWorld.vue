@@ -38,14 +38,15 @@
 
           <!-- restaurants -->
           <section>
-            <div class="columns">
-              <div class="column">
+            <div class="columns is-multiline">
+              
+              <div class="column is-3"  v-for="(collapse) of collapses" v-bind:key="collapse">
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <img
-                        src="../assets/img/logo.jpg"
-                        alt="Placeholder image"
+                        :src="collapse.url"
+                        alt="Placeholder image" class="filter"
                       />
                     </figure>
                   </div>
@@ -54,136 +55,28 @@
                       <div class="media-left">
                         <figure class="image is-48x48">
                           <img
-                            src="../assets/img/logo.jpg"
-                            alt="Placeholder image"
+                            :src="collapse.thumbnailUrl"
+                            alt="Placeholder image" class="filter"
                           />
                         </figure>
                       </div>
                       <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
+                        <p class="title is-4"> {{ collapse.title }}</p>
                       </div>
                     </div>
 
                     <div class="content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                      <a href="#">#css</a> <a href="#">#responsive</a>
-                      <br />
-                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="column">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        src="../assets/img/logo.jpg"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-left">
-                        <figure class="image is-48x48">
-                          <img
-                            src="../assets/img/logo.jpg"
-                            alt="Placeholder image"
-                          />
-                        </figure>
-                      </div>
-                      <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                      </div>
-                    </div>
-
-                    <div class="content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                      <a href="#">#css</a> <a href="#">#responsive</a>
-                      <br />
-                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="column">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        src="../assets/img/logo.jpg"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-left">
-                        <figure class="image is-48x48">
-                          <img
-                            src="../assets/img/logo.jpg"
-                            alt="Placeholder image"
-                          />
-                        </figure>
-                      </div>
-                      <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                      </div>
-                    </div>
-
-                    <div class="content">
-                      <button
+                      <!-- <button
                         class="button is-dark is-medium"
                         @click="isComponentModalActive = true"
                       >
                         Launch component modal
-                      </button>
+                      </button> -->
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="column">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        src="../assets/img/logo.jpg"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-left">
-                        <figure class="image is-48x48">
-                          <img
-                            src="../assets/img/logo.jpg"
-                            alt="Placeholder image"
-                          />
-                        </figure>
-                      </div>
-                      <div class="media-content">
-                        <p class="title is-4">John Smith</p>
-                        <p class="subtitle is-6">@johnsmith</p>
-                      </div>
-                    </div>
-
-                    <div class="content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                      <a href="#">#css</a> <a href="#">#responsive</a>
-                      <br />
-                      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
             <!-- <b-modal
@@ -388,6 +281,11 @@
 <script>
 export default {
   name: "HelloWorld",
+  mounted(){
+    fetch('https://jsonplaceholder.typicode.com/photos/?_limit=10')
+    .then((response) => response.json())
+    .then((data) => this.collapses = data)
+  },
   props: {
     msg: String,
   },
@@ -405,6 +303,10 @@ export default {
       minDatetime: min,
       maxDatetime: max,
       isComponentModalActive: false,
+      
+                collapses: [
+                
+                ]
     };
   },
   
@@ -413,4 +315,5 @@ export default {
   
 
 <style>
+.filter{filter: sepia(100%);}
 </style>
