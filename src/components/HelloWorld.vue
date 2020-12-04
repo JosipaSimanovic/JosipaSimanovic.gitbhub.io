@@ -38,10 +38,26 @@
 
   <!-- restaurants -->
   <section>
+    
+      
     <div class="columns is-multiline">
       <div
+        class="column is-12">
+      <b-field>
+            <b-input placeholder="Search..."
+                type="search"
+                icon="magnify"
+                icon-clickable
+                @icon-click="searchIconClick"
+                icon-right="close-circle"
+                
+                autocomplete="off">
+            </b-input>
+        </b-field>
+      </div>
+      <div
         class="column is-3"
-        v-for="restaurant of withPicture"
+        v-for="(restaurant) of restaurants"
         v-bind:key="restaurant"
       >
         <div class="card" >
@@ -268,17 +284,14 @@ export default {
     )
     .then(response => response.json())
     .then(data => (
-      this.restaurants = data.restaurants
+      this.restaurants = data.restaurants.filter(restaurant =>(restaurant.restaurant.featured_image!=""))
       ))
     ;
     
   },
-  computed: {
-    withPicture(){
-      return this.restaurants.filter(restaurant =>(restaurant.restaurant.featured_image!=""))
-      
-    }
-  },
+  // computed: {
+  //  
+  // },
 
   props: {
     msg: String,
