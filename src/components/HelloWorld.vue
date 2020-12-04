@@ -1,8 +1,8 @@
 <template>
   <!-- <div class="">
     <section class="hero is-light is-medium"> -->
-      <!-- Hero head: will stick at the top -->
-      <!-- <div class="hero-head">
+  <!-- Hero head: will stick at the top -->
+  <!-- <div class="hero-head">
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
@@ -22,9 +22,9 @@
           </div>
         </nav>
       </div> -->
-      <!-- Hero content: will be in the middle -->
-   
-          <!-- <section>
+  <!-- Hero content: will be in the middle -->
+
+  <!-- <section>
             <b-button
               class="button is-dark"
               type="button"
@@ -32,54 +32,50 @@
               icon-left="qrcode-scan"
               @click="isQRModalActive = true"
             >
-              Sjedim u restoranu, daj mi da naručim
+              Sjedim u collapseu, daj mi da naručim
             </b-button>
           </section> -->
 
-          <!-- restaurants -->
-          <section>
-            <div class="columns is-multiline">
-              
-              <div class="column is-3"  v-for="(collapse) of collapses" v-bind:key="collapse">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <img
-                        :src="collapse.url"
-                        alt="Placeholder image" class="filter"
-                      />
-                    </figure>
-                  </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-left">
-                        <figure class="image is-48x48">
-                          <img
-                            :src="collapse.thumbnailUrl"
-                            alt="Placeholder image" class="filter"
-                          />
-                        </figure>
-                      </div>
-                      <div class="media-content">
-                        <p class="title is-4"> {{ collapse.establishments.establishment.name}}</p>
-                      </div>
-                    </div>
-
-                    <div class="content">
-                      <!-- <button
-                        class="button is-dark is-medium"
-                        @click="isComponentModalActive = true"
-                      >
-                        Launch component modal
-                      </button> -->
-                    </div>
-                  </div>
-                </div>
+  <!-- restaurants -->
+  <section>
+    <div class="columns is-multiline">
+      <div
+        class="column is-3"
+        v-for="restaurant of withPicture"
+        v-bind:key="restaurant"
+      >
+        <div class="card" >
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img :src="restaurant.restaurant.featured_image" alt="Placeholder image" class="filter" />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img
+                    :src="restaurant.restaurant.featured_image"
+                    alt="Placeholder image"
+                    class="filter"
+                  />
+                </figure>
               </div>
-              
+              <div class="media-content">
+                <p class="title is-4">{{ restaurant.restaurant.name }}</p>
+              </div>
             </div>
 
-            <!-- <b-modal
+            <div class="content">
+             <p>{{ restaurant.restaurant.cuisines }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- <div v-else></div> -->
+      </div>
+    </div>
+
+    <!-- <b-modal
               v-model="isQRModalActive"
               has-modal-card
               full-screen
@@ -97,110 +93,102 @@
               <qrcode-stream @decode="onDecode" @init="onInit"></qrcode-stream>
               </div>
             </b-modal> -->
-            <!-- Modal -->
-            <b-modal
-              v-model="isComponentModalActive"
-              has-modal-card
-              full-screen
-              :can-cancel="false"
-            >
-              <div class="modal-card">
-                <header class="modal-card-head">
-                  <p class="modal-card-title">Opcije rezervacije</p>
-                  <button
-                    class="delete"
-                    aria-label="close"
-                    @click="isComponentModalActive = false"
-                  ></button>
-                </header>
+    <!-- Modal -->
+    <b-modal
+      v-model="isComponentModalActive"
+      has-modal-card
+      full-screen
+      :can-cancel="false"
+    >
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Opcije rezervacije</p>
+          <button
+            class="delete"
+            aria-label="close"
+            @click="isComponentModalActive = false"
+          ></button>
+        </header>
 
-                <section class="modal-card-body">
-                  <div class="columns">
-                    <div class="column">
-                      <figure class="image is-1by1">
-                        <img
-                          src="../assets/img/logo.jpg"
-                          alt="Placeholder image"
-                        />
-                      </figure>
+        <section class="modal-card-body">
+          <div class="columns">
+            <div class="column">
+              <figure class="image is-1by1">
+                <img src="../assets/img/logo.jpg" alt="Placeholder image" />
+              </figure>
 
-                      <h4>Ime restorana</h4>
-                      <p>adresa</p>
-                      <p>kontakt broj</p>
-                    </div>
+              <h4>Ime collapsea</h4>
+              <p>adresa</p>
+              <p>kontakt broj</p>
+            </div>
 
-                    <div class="column">
-                      <h1 class="is-dark">Broj gostiju</h1>
-                      <h1 class="is-dark">
-                        <span class="material-icons"> people </span>
-                      </h1>
-                      <b-dropdown-item value="2" aria-role="listitem">
-                        <span>2</span>
-                      </b-dropdown-item>
-                      <b-dropdown-item value="4" aria-role="listitem">
-                        <span>4</span>
-                      </b-dropdown-item>
-                      <b-dropdown-item value="6" aria-role="listitem">
-                        <span>6</span>
-                      </b-dropdown-item>
-                      <b-dropdown-item value="12" aria-role="listitem">
-                        <span>12</span>
-                      </b-dropdown-item>
-                    </div>
-                    <div class="column">
-                      <h1 class="is-dark">Mjesto stola</h1>
-                      <h1 class="is-dark">
-                        <span class="material-icons"> push_pin </span>
-                      </h1>
-                      <b-dropdown-item value="placeWindow" aria-role="listitem">
-                        <span>Kraj prozora</span>
-                      </b-dropdown-item>
-                      <b-dropdown-item
-                        value="placeInterion"
-                        aria-role="listitem"
-                      >
-                        <span>U unutrašnjosti</span>
-                      </b-dropdown-item>
-                    </div>
-                    <div class="column">
-                      <h1 class="is-dark">Vrijeme rezervacije</h1>
-                      <b-datetimepicker
-                        v-model="datetime"
-                        inline
-                        :timepicker="timepicker"
-                        :min-datetime="minDatetime"
-                        :max-datetime="maxDatetime"
-                        :horizontal-time-picker="true"
-                      ></b-datetimepicker>
-                    </div>
-                  </div>
-                </section>
-                <footer class="modal-card-foot">
-                  <div class="container">
-                    <div class="columns">
-                      <div class="column">
-                        <button class="button is-dark">
-                          Sviđa mi se! Rezerviraj
-                        </button>
-                      </div>
-                      <div class="column">
-                        <button
-                          outlined
-                          class="button is-dark close-modal"
-                          type="button"
-                          @click="isComponentModalActive = false"
-                        >
-                          Zatvori
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </footer>
+            <div class="column">
+              <h1 class="is-dark">Broj gostiju</h1>
+              <h1 class="is-dark">
+                <span class="material-icons"> people </span>
+              </h1>
+              <b-dropdown-item value="2" aria-role="listitem">
+                <span>2</span>
+              </b-dropdown-item>
+              <b-dropdown-item value="4" aria-role="listitem">
+                <span>4</span>
+              </b-dropdown-item>
+              <b-dropdown-item value="6" aria-role="listitem">
+                <span>6</span>
+              </b-dropdown-item>
+              <b-dropdown-item value="12" aria-role="listitem">
+                <span>12</span>
+              </b-dropdown-item>
+            </div>
+            <div class="column">
+              <h1 class="is-dark">Mjesto stola</h1>
+              <h1 class="is-dark">
+                <span class="material-icons"> push_pin </span>
+              </h1>
+              <b-dropdown-item value="placeWindow" aria-role="listitem">
+                <span>Kraj prozora</span>
+              </b-dropdown-item>
+              <b-dropdown-item value="placeInterion" aria-role="listitem">
+                <span>U unutrašnjosti</span>
+              </b-dropdown-item>
+            </div>
+            <div class="column">
+              <h1 class="is-dark">Vrijeme rezervacije</h1>
+              <b-datetimepicker
+                v-model="datetime"
+                inline
+                :timepicker="timepicker"
+                :min-datetime="minDatetime"
+                :max-datetime="maxDatetime"
+                :horizontal-time-picker="true"
+              ></b-datetimepicker>
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <div class="container">
+            <div class="columns">
+              <div class="column">
+                <button class="button is-dark">Sviđa mi se! Rezerviraj</button>
               </div>
-            </b-modal>
-            <!-- Modal end -->
+              <div class="column">
+                <button
+                  outlined
+                  class="button is-dark close-modal"
+                  type="button"
+                  @click="isComponentModalActive = false"
+                >
+                  Zatvori
+                </button>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </b-modal>
+    <!-- Modal end -->
 
-            <!-- <b-dropdown v-model="selectedOptions" multiple aria-role="list">
+    <!-- <b-dropdown v-model="selectedOptions" multiple aria-role="list">
               <button class="button is-dark" type="button" slot="trigger">
                 <span>Opcije rezervacije: </span>
                 <b-icon icon="menu-down"></b-icon>
@@ -256,10 +244,8 @@
                 </div>
               </div>
             </b-dropdown> -->
-          </section>
-          <!-- restaurants end-->
-      
-     
+  </section>
+  <!-- restaurants end-->
 </template>
 
 <script>
@@ -269,26 +255,31 @@
 // Vue.use(VueAxios,axios)
 export default {
   name: "HelloWorld",
-  mounted(){
-   fetch("https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286", {
-	"method": "GET",
-  
-	"headers": {
-    "user-key": '2aba10d52b01e55bbde1d49f29ce26c7',
-    "host": "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286"
-	}
-})
-.then(response => {
-	response.json();
-})
-.then((data) => this.restoran = data)
-.catch(err => {
-	console.error(err);
-});
-    // 2aba10d52b01e55bbde1d49f29ce26c7
-    // .then((response) => response.json())
-    // .then((data) => this.collapses = data)
+ mounted(){
+   fetch(
+     "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286", 
+      {
+      "method": "GET",
+      "headers": {
+                    "user-key": '2aba10d52b01e55bbde1d49f29ce26c7',
+                    "host": "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286"
+        }
+      }
+    )
+    .then(response => response.json())
+    .then(data => (
+      this.restaurants = data.restaurants
+      ))
+    ;
+    
   },
+  computed: {
+    withPicture(){
+      return this.restaurants.filter(restaurant =>(restaurant.restaurant.featured_image!=""))
+      
+    }
+  },
+
   props: {
     msg: String,
   },
@@ -306,17 +297,20 @@ export default {
       minDatetime: min,
       maxDatetime: max,
       isComponentModalActive: false,
-      
-                restorans: [
-                
-                ]
+
+      restaurants: [],
+   
     };
   },
-  
 };
 </script>
   
 
 <style>
-.filter{filter: sepia(100%);}
+/* .filter {
+  filter: sepia(100%);
+} */
+.column .is-3:empty{
+  display: none
+}
 </style>
