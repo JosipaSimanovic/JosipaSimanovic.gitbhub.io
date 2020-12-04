@@ -61,7 +61,7 @@
                         </figure>
                       </div>
                       <div class="media-content">
-                        <!-- <p class="title is-4"> {{ collapse.results.venues }}</p> -->
+                        <p class="title is-4"> {{ collapse.establishments.establishment.name}}</p>
                       </div>
                     </div>
 
@@ -270,18 +270,18 @@
 export default {
   name: "HelloWorld",
   mounted(){
-   fetch("https://resy.p.rapidapi.com/4/find?lat=37.788719679657554&long=-122.40057774847898&party_size=2&day=2021-02-14&offset=0", {
+   fetch("https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286", {
 	"method": "GET",
-  "mode": 'cors',
+  
 	"headers": {
-		"x-rapidapi-key": "5d033ea867mshd9b398fb58474abp17b55cjsn8876670122a0",
-		"x-rapidapi-host": "resy.p.rapidapi.com"
+    "user-key": '2aba10d52b01e55bbde1d49f29ce26c7',
+    "host": "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286"
 	}
 })
 .then(response => {
 	response.json();
 })
-.then((data) => this.collapses = data)
+.then((data) => this.restoran = data)
 .catch(err => {
 	console.error(err);
 });
@@ -307,7 +307,7 @@ export default {
       maxDatetime: max,
       isComponentModalActive: false,
       
-                collapses: [
+                restorans: [
                 
                 ]
     };
