@@ -61,7 +61,7 @@
                         </figure>
                       </div>
                       <div class="media-content">
-                        <p class="title is-4"> {{ collapse.title }}</p>
+                        <!-- <p class="title is-4"> {{ collapse.results.venues }}</p> -->
                       </div>
                     </div>
 
@@ -259,32 +259,35 @@
           </section>
           <!-- restaurants end-->
       
-      <!-- Hero footer: will stick at the bottom -->
-      <!-- <div class="hero-foot">
-        <nav class="tabs">
-          <div class="container">
-            <ul>
-              <li class="is-active"><a>Overview</a></li>
-              <li><a>Modifiers</a></li>
-              <li><a>Grid</a></li>
-              <li><a>Elements</a></li>
-              <li><a>Components</a></li>
-              <li><a>Layout</a></li>
-            </ul>
-          </div>
-        </nav>
-      </div> -->
-    <!-- </section>
-  </div> -->
+     
 </template>
 
 <script>
+// import Vue from 'vue';
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
+// Vue.use(VueAxios,axios)
 export default {
   name: "HelloWorld",
   mounted(){
-    fetch('https://jsonplaceholder.typicode.com/photos/?_limit=10')
-    .then((response) => response.json())
-    .then((data) => this.collapses = data)
+   fetch("https://resy.p.rapidapi.com/4/find?lat=37.788719679657554&long=-122.40057774847898&party_size=2&day=2021-02-14&offset=0", {
+	"method": "GET",
+  "mode": 'cors',
+	"headers": {
+		"x-rapidapi-key": "5d033ea867mshd9b398fb58474abp17b55cjsn8876670122a0",
+		"x-rapidapi-host": "resy.p.rapidapi.com"
+	}
+})
+.then(response => {
+	response.json();
+})
+.then((data) => this.collapses = data)
+.catch(err => {
+	console.error(err);
+});
+    // 2aba10d52b01e55bbde1d49f29ce26c7
+    // .then((response) => response.json())
+    // .then((data) => this.collapses = data)
   },
   props: {
     msg: String,
