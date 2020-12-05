@@ -50,15 +50,15 @@
                 icon-clickable
                 @icon-click="searchIconClick"
                 icon-right="close-circle"
-                
+                v-model="search"
                 autocomplete="off">
             </b-input>
         </b-field>
       </div>
       <div
         class="column is-3"
-        v-for="(restaurant) of restaurants"
-        v-bind:key="restaurant"
+        v-for="restaurant in filtrirano"
+        v-bind:key="restaurant.restaurant.id"
       >
         <div class="card" >
           <div class="card-image">
@@ -289,9 +289,15 @@ export default {
     ;
     
   },
-  // computed: {
-  //  
-  // },
+  
+  computed: {
+   filtrirano() {
+
+      return this.restaurants.filter(restaurant =>{
+        return  restaurant.restaurant.name.toLowerCase().includes(this.search.toLowerCase())
+      });
+    },
+  },
 
   props: {
     msg: String,
@@ -310,7 +316,7 @@ export default {
       minDatetime: min,
       maxDatetime: max,
       isComponentModalActive: false,
-
+      search: '',
       restaurants: [],
    
     };
