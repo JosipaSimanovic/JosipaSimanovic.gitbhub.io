@@ -47,8 +47,11 @@ button{
     all: unset;
 }
 .hero{
-    height: 100vh;
-    
+    background-color: var(--black);
+    background: url(../img/cutlery3.svg);
+    background-size: 103%;
+    background-position: top center;
+    background-repeat: no-repeat space;
 }
 .hero section{
     padding: 20px 0;
@@ -63,29 +66,29 @@ button{
     border: none;
 }
 .hero-body{
-    background-color: var(--black);
-  
+  background-color: rgba(0,0,0,0.5);
+  min-height: calc(100vh - 52px);
 }
 .hero.is-light .navbar-item, .hero.is-light .navbar-link{
     color: var(--white);
     border: 2px solid var(--black);
     border-width: 0 0 2px 0;
 }
-.hero-body::before {    
+/* .hero-body::before {    
     content: "";
     background: url(../img/cutlery.png);
-    background-size: 95% 90%;
+  background-size: 100%;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     position: absolute;
-    top:20px;
+    top:-175px;
     right: 0px;
-    bottom: 50px;
+
     width: 100%;
-    height: 100%;
+    height: 1800px;
     left: 0px;
     opacity: 0.5;
-}
+} */
 .button{
     padding-left: 1em;
     padding-right: 1em;
@@ -153,15 +156,16 @@ a.dropdown-item{
     border: 2px solid var(--white);
     border-width: 0 0 2px 0;
 }
-.control{
-    margin-left: 5px;
-}
+
 .hero.is-medium .hero-body{
     padding-top: 3em;
 }
-.modal-background{
-    background-color: var(--black);
-}
+@media screen and (min-width: 769px){
+
+.hero.is-medium .hero-body {
+    padding: 40px 1.5rem;
+}}
+
 .modal-card-body{
     background-color: var(--black);
     color: var(--white);
@@ -176,6 +180,13 @@ a.dropdown-item{
 }
 .image.is-square img, .image.is-square .has-ratio, .image.is-1by1 img, .image.is-1by1 .has-ratio, .image.is-5by4 img, .image.is-5by4 .has-ratio, .image.is-4by3 img, .image.is-4by3 .has-ratio, .image.is-3by2 img, .image.is-3by2 .has-ratio, .image.is-5by3 img, .image.is-5by3 .has-ratio, .image.is-16by9 img, .image.is-16by9 .has-ratio, .image.is-2by1 img, .image.is-2by1 .has-ratio, .image.is-3by1 img, .image.is-3by1 .has-ratio, .image.is-4by5 img, .image.is-4by5 .has-ratio, .image.is-3by4 img, .image.is-3by4 .has-ratio, .image.is-2by3 img, .image.is-2by3 .has-ratio, .image.is-3by5 img, .image.is-3by5 .has-ratio, .image.is-9by16 img, .image.is-9by16 .has-ratio, .image.is-1by2 img, .image.is-1by2 .has-ratio, .image.is-1by3 img, .image.is-1by3 .has-ratio{
     object-fit: cover;
+}
+.image img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    /* object-fit: unset; */
+    width: 100%;
 }
 .modal.is-active{
     padding: 20px;
@@ -202,12 +213,15 @@ a.dropdown-item{
     background-color: var(--black);
     color: var(--white);
 }
+.modal-close::before, .modal-close::after{
+    background-color: white;
+}
 .hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active{
     border-width: 0 0 2px 0;
 }
 a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-item.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, .navbar-link.is-active {
     background-color: inherit;}
-.field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active,.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-today,.select select, .taginput .taginput-container.is-focusable, .textarea, .input,.datepicker .datepicker-table{
+.field.has-addons .control:first-child:not(:only-child) .button,a.navbar-item.router-link-exact-active.router-link-active, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select,.hero.is-light a.navbar-item:hover, .hero.is-light a.navbar-item.is-active,.datepicker .datepicker-table .datepicker-body .datepicker-cell.is-today,.select select, .taginput .taginput-container.is-focusable, .textarea, .input,.datepicker .datepicker-table{
     border-color: var(--orange);
     border-radius: 0;
     border-width: 0 0 2px 0;

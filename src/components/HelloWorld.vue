@@ -38,21 +38,20 @@
 
   <!-- restaurants -->
   <section>
-    
-      
     <div class="columns is-multiline">
-      <div
-        class="column is-12">
-      <b-field>
-            <b-input placeholder="Search..."
-                type="search"
-                icon="magnify"
-                icon-clickable
-                @icon-click="searchIconClick"
-                icon-right="close-circle"
-                v-model="search"
-                autocomplete="off">
-            </b-input>
+      <div class="column is-12">
+        <b-field>
+          <b-input
+            placeholder="Search..."
+            type="search"
+            icon="magnify"
+            icon-clickable
+            @icon-click="searchIconClick"
+            icon-right="close-circle"
+            v-model="search"
+            autocomplete="off"
+          >
+          </b-input>
         </b-field>
       </div>
       <div
@@ -60,10 +59,14 @@
         v-for="restaurant in filtrirano"
         v-bind:key="restaurant.restaurant.id"
       >
-        <div class="card" >
+        <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
-              <img :src="restaurant.restaurant.featured_image" alt="Placeholder image" class="filter" />
+              <img
+                :src="restaurant.restaurant.featured_image"
+                alt="Placeholder image"
+                class="filter"
+              />
             </figure>
           </div>
           <div class="card-content">
@@ -83,14 +86,26 @@
             </div>
 
             <div class="content">
-             <p>{{ restaurant.restaurant.cuisines }}</p>
+              <p>{{ restaurant.restaurant.cuisines }}</p>
+              <b-button class="button is-dark"  @click="$router.push('/view/' + props.restaurant.id)"
+                >Više informacija</b-button
+              >
             </div>
           </div>
         </div>
         <!-- <div v-else></div> -->
       </div>
     </div>
-
+    <b-modal 
+        :active="$route.path.includes('view')" 
+        aria-role="dialog" 
+        aria-modal
+        :on-cancel="handleCancel"
+    >
+      <template>
+        <router-view @updated="handleUpdate" />
+      </template>
+    </b-modal>
     <!-- <b-modal
               v-model="isQRModalActive"
               has-modal-card
@@ -110,7 +125,7 @@
               </div>
             </b-modal> -->
     <!-- Modal -->
-    <b-modal
+    <!-- <b-modal
       v-model="isComponentModalActive"
       has-modal-card
       full-screen
@@ -201,7 +216,7 @@
           </div>
         </footer>
       </div>
-    </b-modal>
+    </b-modal> -->
     <!-- Modal end -->
 
     <!-- <b-dropdown v-model="selectedOptions" multiple aria-role="list">
@@ -271,30 +286,44 @@
 // Vue.use(VueAxios,axios)
 export default {
   name: "HelloWorld",
- mounted(){
-   fetch(
-     "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286", 
+  mounted() {
+    fetch(
+      "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286",
       {
-      "method": "GET",
-      "headers": {
-                    "user-key": '2aba10d52b01e55bbde1d49f29ce26c7',
-                    "host": "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286"
-        }
+        method: "GET",
+        headers: {
+          "user-key": "2aba10d52b01e55bbde1d49f29ce26c7",
+          host:
+            "https://developers.zomato.com/api/v2.1/search?entity_id=280&entity_type=city&count=50&radius=500&establishment_type=286",
+        },
       }
     )
-    .then(response => response.json())
-    .then(data => (
-      this.restaurants = data.restaurants.filter(restaurant =>(restaurant.restaurant.featured_image!=""))
-      ))
-    ;
-    
+      .then((response) => response.json())
+      .then(
+        (data) =>
+          (this.restaurants = data.restaurants.filter(
+            (restaurant) => restaurant.restaurant.featured_image != ""
+          ))
+      );
   },
-  
-  computed: {
-   filtrirano() {
+  methods:{
+    handleCancel() {
+      this.$router.push('/')
+    },
+    handleUpdate(todo) {
+      if (todo.id) {
+        this.data.find((t) => t.id === todo.id).title = todo.title
+      } 
+      this.$router.push('/')
+    },
 
-      return this.restaurants.filter(restaurant =>{
-        return  restaurant.restaurant.name.toLowerCase().includes(this.search.toLowerCase())
+  },
+  computed: {
+    filtrirano() {
+      return this.restaurants.filter((restaurant) => {
+        return restaurant.restaurant.name
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
       });
     },
   },
@@ -308,17 +337,19 @@ export default {
     const max = new Date();
     max.setHours(21);
     return {
-      selectedOptions: [],
-      datetime: new Date(),
-      timepicker: {
-        incrementMinutes: 15,
-      },
-      minDatetime: min,
-      maxDatetime: max,
-      isComponentModalActive: false,
-      search: '',
+      modal: true,
+      value: 1,
+      // selectedOptions: [],
+      // datetime: new Date(),
+      // timepicker: {
+      //   incrementMinutes: 15,
+      // },
+      // minDatetime: min,
+      // maxDatetime: max,
+      // isComponentModalActive: false,
+      search: "",
       restaurants: [],
-   
+      
     };
   },
 };
@@ -329,7 +360,7 @@ export default {
 /* .filter {
   filter: sepia(100%);
 } */
-.column .is-3:empty{
-  display: none
+.column .is-3:empty {
+  display: none;
 }
 </style>

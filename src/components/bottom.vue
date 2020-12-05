@@ -1,6 +1,6 @@
 <template>
     <div class="hero-foot">
-        <nav class="tabs">
+        <!-- <nav class="tabs">
           <div class="container">
             <ul>
               <li class="is-active"><a>Overview</a></li>
@@ -11,7 +11,7 @@
               <li><a>Layout</a></li>
             </ul>
           </div>
-        </nav>
+        </nav> -->
       </div>
 </template>
 <script>
