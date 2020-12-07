@@ -4,7 +4,7 @@
           <div class="card-image">
             <figure class="image is-4by3">
               <img
-                :src="restaurant.restaurant.featured_image"
+                :src="restaurant.featured_image"
                 alt="Placeholder image"
                 class="filter"
               />
@@ -15,19 +15,20 @@
               <div class="media-left">
                 <figure class="image is-48x48">
                   <img
-                    :src="restaurant.restaurant.featured_image"
+                    :src="restaurant.featured_image"
                     alt="Placeholder image"
                     class="filter"
                   />
                 </figure>
               </div>
               <div class="media-content">
-                <p class="title is-4">{{ restaurant.restaurant.name }}</p>
+                <p class="title is-4">{{restaurant.name }}</p>
+                <p>neki tekst</p>
               </div>
             </div>
 
             <div class="content">
-              <p>{{ restaurant.restaurant.cuisines }}</p>
+              <p>{{ restaurant.cuisines }}</p>
               
             </div>
           </div>

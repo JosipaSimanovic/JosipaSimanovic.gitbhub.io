@@ -69,6 +69,7 @@
                 class="filter"
               />
             </figure>
+            <div id="overlay"></div>
           </div>
           <div class="card-content">
             <div class="media">
@@ -78,7 +79,7 @@
                     :src="restaurant.restaurant.featured_image"
                     alt="Placeholder image"
                     class="filter"
-                  />
+                  />   
                 </figure>
               </div>
               <div class="media-content">
@@ -88,7 +89,7 @@
 
             <div class="content">
               <p>{{ restaurant.restaurant.cuisines }}</p>
-              <b-button class="button is-dark"  @click="$router.push('/view/' + restaurant.restaurant.id)"
+              <b-button  class="button is-dark"  @click="$router.push('/view/' + restaurant.restaurant.id)"
                 >Više informacija</b-button
               >
             </div>
@@ -104,7 +105,7 @@
         :on-cancel="handleCancel"
     >
       <template>
-        <router-view @updated="handleUpdate" />
+        <router-view  />
       </template>
     </b-modal>
     <!-- <b-modal
