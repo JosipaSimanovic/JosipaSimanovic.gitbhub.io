@@ -34,8 +34,12 @@
               <td>{{ restaurant.location.locality }}</td>
             </tr>
             <tr>
-              <td>Average cost for 2 (USD)</td>
-              <td>{{ restaurant.average_cost_for_two }}</td>
+              <td>Average cost for 2 </td>
+              <td>{{ restaurant.average_cost_for_two }}{{ restaurant.currency }} </td>
+            </tr>
+            <tr>
+              <td>User rating</td>
+              <td>{{ restaurant.user_rating.aggregate_rating }} {{ restaurant.user_rating.rating_text }}</td>
             </tr>
             <tr>
               <td>Contact</td>
@@ -77,3 +81,8 @@ export default {
   }
 }
 </script>
+<style>
+  .filter{
+    max-height: 400px;
+  }
+</style>
