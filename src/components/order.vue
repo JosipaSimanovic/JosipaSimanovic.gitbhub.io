@@ -4,7 +4,7 @@
         class="button is-dark"
         icon-left="qrcode-scan"
         @click="isqrModalActive = true"
-    >Želim naručiti</b-button>
+    >Scan QR code</b-button>
     <b-modal
               v-model="isqrModalActive"
               has-modal-card
@@ -27,7 +27,7 @@
                           type="button"
                           @click="isqrModalActive = false"
                         >
-                          Zatvori
+                          Close
                         </button>
     </b-modal>
 

@@ -90,7 +90,7 @@
               <b-button
                 class="button is-dark"
                 @click="$router.push('/view/' + restaurant.restaurant.id)"
-                >Više informacija</b-button
+                >See more info</b-button
               >
             </div>
           </div>
