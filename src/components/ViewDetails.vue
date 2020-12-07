@@ -3,7 +3,7 @@
     <b-loading :is-full-page="true" :active="true" v-if="isLoading"></b-loading>
     <div class="card" v-else>
       <div class="card-image">
-        <figure class="image is-4by3">
+        <figure class="image ">
           <img
             :src="restaurant.featured_image"
             alt="Placeholder image"
@@ -13,23 +13,36 @@
       </div>
       <div class="card-content">
         <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img
-                :src="restaurant.featured_image"
-                alt="Placeholder image"
-                class="filter"
-              />
-            </figure>
-          </div>
+          
           <div class="media-content">
             <p class="title is-4">{{ restaurant.name }}</p>
-            <p>neki tekst</p>
           </div>
         </div>
 
         <div class="content">
-          <p>{{ restaurant.cuisines }}</p>
+          <table>
+            <tr>
+              <td>Cuisines</td>
+              <td>{{ restaurant.cuisines }}</td>
+            </tr>
+            <tr>
+              <td>Location</td>
+              <td>{{ restaurant.location.address }}</td>
+            </tr>
+            <tr>
+              <td>Neighbourhood</td>
+              <td>{{ restaurant.location.locality }}</td>
+            </tr>
+            <tr>
+              <td>Average cost for 2 (USD)</td>
+              <td>{{ restaurant.average_cost_for_two }}</td>
+            </tr>
+            <tr>
+              <td>Contact</td>
+              <td><a :href="`tel:restaurant.phone_numbers`">{{ restaurant.phone_numbers }}</a></td>
+            </tr>
+          </table>
+          
         </div>
       </div>
     </div>

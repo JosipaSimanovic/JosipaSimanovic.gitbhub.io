@@ -45,8 +45,6 @@
             placeholder="Search..."
             type="search"
             icon="magnify"
-            icon-clickable
-            @icon-click="searchIconClick"
             icon-right="close-circle"
             v-model="search"
             autocomplete="off"
@@ -58,9 +56,9 @@
         class="column is-3"
         v-for="restaurant in filtrirano"
         v-bind:key="restaurant.restaurant.id"
-        
       >
-        <div class="card" >
+       
+        <div class="card">
           <div class="card-image">
             <figure class="image is-4by3">
               <img
@@ -79,7 +77,7 @@
                     :src="restaurant.restaurant.featured_image"
                     alt="Placeholder image"
                     class="filter"
-                  />   
+                  />
                 </figure>
               </div>
               <div class="media-content">
@@ -89,7 +87,9 @@
 
             <div class="content">
               <p>{{ restaurant.restaurant.cuisines }}</p>
-              <b-button  class="button is-dark"  @click="$router.push('/view/' + restaurant.restaurant.id)"
+              <b-button
+                class="button is-dark"
+                @click="$router.push('/view/' + restaurant.restaurant.id)"
                 >Više informacija</b-button
               >
             </div>
@@ -97,15 +97,22 @@
         </div>
         <!-- <div v-else></div> -->
       </div>
+     <div v-if="filtrirano.length === 0">
+        <div class="column is-12 ">
+      
+          <p>No restaurants match your search.</p>
+    
+        </div>
+      </div>
     </div>
-    <b-modal 
-        :active="$route.path.includes('view')" 
-        aria-role="dialog" 
-        aria-modal
-        :on-cancel="handleCancel"
+    <b-modal
+      :active="$route.path.includes('view')"
+      aria-role="dialog"
+      aria-modal
+      :on-cancel="handleCancel"
     >
       <template>
-        <router-view  />
+        <router-view />
       </template>
     </b-modal>
     <!-- <b-modal
@@ -308,17 +315,17 @@ export default {
           ))
       );
   },
-  methods:{
+  methods: {
     handleCancel() {
-      this.$router.push('/')
+      this.$router.push("/");
     },
     handleUpdate(restaurant) {
       if (restaurant.restaurant.id) {
-        this.data.find((t) => t.id === restaurant.restaurant.id).name = restaurant.restaurant.name
-      } 
-      this.$router.push('/')
+        this.data.find((t) => t.id === restaurant.restaurant.id).name =
+          restaurant.restaurant.name;
+      }
+      this.$router.push("/");
     },
-
   },
   computed: {
     filtrirano() {
@@ -348,7 +355,6 @@ export default {
       // isComponentModalActive: false,
       search: "",
       restaurants: [],
-      
     };
   },
 };
