@@ -88,7 +88,7 @@
 
             <div class="content">
               <p>{{ restaurant.restaurant.cuisines }}</p>
-              <b-button class="button is-dark"  @click="$router.push('/view/' + props.restaurant.id)"
+              <b-button class="button is-dark"  @click="$router.push('/view/' + restaurant.restaurant.id)"
                 >Više informacija</b-button
               >
             </div>
@@ -311,9 +311,9 @@ export default {
     handleCancel() {
       this.$router.push('/')
     },
-    handleUpdate(todo) {
-      if (todo.id) {
-        this.data.find((t) => t.id === todo.id).title = todo.title
+    handleUpdate(restaurant) {
+      if (restaurant.restaurant.id) {
+        this.data.find((t) => t.id === restaurant.restaurant.id).name = restaurant.restaurant.name
       } 
       this.$router.push('/')
     },
