@@ -3,7 +3,7 @@
         <div class="container has-text-centered">
           <Order />
           <HelloWorld />
-         <router-view />
+       
           
         </div>
       </div>

@@ -1,4 +1,4 @@
-<template>
+<template v-slot="props">
   <!-- <div class="">
     <section class="hero is-light is-medium"> -->
   <!-- Hero head: will stick at the top -->
@@ -58,8 +58,9 @@
         class="column is-3"
         v-for="restaurant in filtrirano"
         v-bind:key="restaurant.restaurant.id"
+        
       >
-        <div class="card">
+        <div class="card" >
           <div class="card-image">
             <figure class="image is-4by3">
               <img
@@ -328,9 +329,6 @@ export default {
     },
   },
 
-  props: {
-    msg: String,
-  },
   data() {
     const min = new Date();
     min.setHours(9);
